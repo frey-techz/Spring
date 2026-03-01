@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring Love</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: linear-gradient(to top, #ffd6e7, #ffeef5, #e0f7fa);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .flower {
+        position: absolute;
+        font-size: 30px;
+        animation: floatFlower linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes floatFlower {
+        from { transform: translateY(100vh) rotate(0deg); }
+        to { transform: translateY(-10vh) rotate(360deg); }
+    }
+
+    .note {
+        position: absolute;
+        padding: 10px 16px;
+        background: rgba(255,255,255,0.85);
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        font-size: 18px;
+        color: #ff4d88;
+        animation: floatNote 6s ease-in-out forwards;
+        white-space: nowrap;
+    }
+
+    @keyframes floatNote {
+        0% { transform: translateY(20px); opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { transform: translateY(-60px); opacity: 0; }
+    }
+
+    .centerText {
+        position: absolute;
+        top: 40%;
+        width: 100%;
+        text-align: center;
+        font-size: 40px;
+        color: #ff3385;
+        text-shadow: 0 0 10px white;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 10px white; }
+        to { text-shadow: 0 0 20px #ff99cc; }
+    }
+</style>
+</head>
+<body>
+
+<div class="centerText">You Make My World Bloom 🌸</div>
+
+<script>
+    const flowers = ["🌸", "🌼", "🌷", "🌺", "💮"];
+    const loveNotes = [
+        "You are my sunshine ☀️",
+        "I adore you 💕",
+        "You make my heart dance 💃",
+        "Forever my favorite person 💖",
+        "Spring feels like you 🌷",
+        "You are magic ✨"
+    ];
+
+    function createFlower() {
+        const flower = document.createElement("div");
+        flower.className = "flower";
+        flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.style.animationDuration = (5 + Math.random() * 5) + "s";
+        flower.style.fontSize = (20 + Math.random() * 30) + "px";
+        document.body.appendChild(flower);
+
+        setTimeout(() => flower.remove(), 10000);
+    }
+
+    function createLoveNote() {
+        const note = document.createElement("div");
+        note.className = "note";
+        note.innerText = loveNotes[Math.floor(Math.random() * loveNotes.length)];
+        note.style.left = (10 + Math.random() * 80) + "vw";
+        note.style.top = (50 + Math.random() * 30) + "vh";
+        document.body.appendChild(note);
+
+        setTimeout(() => note.remove(), 6000);
+    }
+
+    setInterval(createFlower, 500);
+    setInterval(createLoveNote, 2000);
+</script>
+
+</body>
+</html>
