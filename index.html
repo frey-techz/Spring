@@ -3,103 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spring Love</title>
+<title>Spring Pony Love</title>
+
 <style>
-    body {
-        margin: 0;
-        overflow: hidden;
-        background: linear-gradient(to top, #ffd6e7, #ffeef5, #e0f7fa);
-        font-family: 'Segoe UI', sans-serif;
-    }
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to top, #b2f0ff 0%, #e6fff9 40%, #fff5f9 100%);
+}
 
-    .flower {
-        position: absolute;
-        font-size: 30px;
-        animation: floatFlower linear infinite;
-        opacity: 0.8;
-    }
+/* Sun */
+.sun {
+    position: absolute;
+    top: 60px;
+    right: 100px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #fff6b3, #ffd966);
+    border-radius: 50%;
+    box-shadow: 0 0 60px #ffe680;
+}
 
-    @keyframes floatFlower {
-        from { transform: translateY(100vh) rotate(0deg); }
-        to { transform: translateY(-10vh) rotate(360deg); }
-    }
+/* Grass */
+.grass {
+    position: absolute;
+    bottom: 35vh;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to top, #4caf50, #66bb6a);
+}
 
-    .note {
-        position: absolute;
-        padding: 10px 16px;
-        background: rgba(255,255,255,0.85);
-        border-radius: 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        font-size: 18px;
-        color: #ff4d88;
-        animation: floatNote 6s ease-in-out forwards;
-        white-space: nowrap;
-    }
+/* Pond */
+.pond {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 35vh;
+    background: radial-gradient(ellipse at center, #7fd8ff 0%, #4cc3f0 60%, #3aaed8 100%);
+    border-top-left-radius: 50% 40%;
+    border-top-right-radius: 50% 40%;
+}
 
-    @keyframes floatNote {
-        0% { transform: translateY(20px); opacity: 0; }
-        20% { opacity: 1; }
-        80% { opacity: 1; }
-        100% { transform: translateY(-60px); opacity: 0; }
-    }
+/* Ripples */
+.ripple {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    width: 200px;
+    height: 40px;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: rippleAnim 4s infinite ease-out;
+}
 
-    .centerText {
-        position: absolute;
-        top: 40%;
-        width: 100%;
-        text-align: center;
-        font-size: 40px;
-        color: #ff3385;
-        text-shadow: 0 0 10px white;
-        animation: glow 2s ease-in-out infinite alternate;
-    }
+@keyframes rippleAnim {
+    0% { transform: translateX(-50%) scale(0.5); opacity: 0.7; }
+    100% { transform: translateX(-50%) scale(2); opacity: 0; }
+}
 
-    @keyframes glow {
-        from { text-shadow: 0 0 10px white; }
-        to { text-shadow: 0 0 20px #ff99cc; }
-    }
+/* Flowers */
+.flower {
+    position: absolute;
+    bottom: 35vh;
+    font-size: 28px;
+    animation: sway 3s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+    from { transform: rotate(-5deg); }
+    to { transform: rotate(5deg); }
+}
+
+/* Floating Love Notes */
+.note {
+    position: absolute;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 18px;
+    color: #ff4d88;
+    animation: floatNote 6s ease-in-out forwards;
+    white-space: nowrap;
+}
+
+@keyframes floatNote {
+    0% { transform: translateY(20px); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-60px); opacity: 0; }
+}
+
+/* Pony (inspired pastel shy pony) */
+.pony {
+    position: absolute;
+    bottom: 38vh;
+    left: 15%;
+    width: 140px;
+    height: 90px;
+    background: #ffe680;
+    border-radius: 50% 50% 40% 40%;
+    animation: breathe 4s ease-in-out infinite;
+}
+
+/* Pony head */
+.pony::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #ffe680;
+    border-radius: 50%;
+    left: 90px;
+    top: -30px;
+}
+
+/* Pony mane */
+.pony::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #ff9ed8;
+    border-radius: 50%;
+    left: 85px;
+    top: -35px;
+    opacity: 0.9;
+}
+
+@keyframes breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* Center Message */
+.centerText {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+    font-size: 42px;
+    color: #ff3385;
+    text-shadow: 0 0 10px white;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 20px #ff99cc; }
+}
 </style>
 </head>
 <body>
 
+<div class="sun"></div>
+<div class="grass"></div>
+<div class="pond"></div>
+<div class="ripple"></div>
+
+<div class="pony"></div>
+
 <div class="centerText">You Make My World Bloom 🌸</div>
 
 <script>
-    const flowers = ["🌸", "🌼", "🌷", "🌺", "💮"];
-    const loveNotes = [
-        "You are my sunshine ☀️",
-        "I adore you 💕",
-        "You make my heart dance 💃",
-        "Forever my favorite person 💖",
-        "Spring feels like you 🌷",
-        "You are magic ✨"
-    ];
+const flowers = ["🌸","🌼","🌷","🌺","💮"];
+const loveNotes = [
+    "You are my sunshine ☀️",
+    "I adore you 💕",
+    "You make my heart dance 💃",
+    "Forever my favorite person 💖",
+    "Spring feels like you 🌷",
+    "You're magical ✨"
+];
 
-    function createFlower() {
-        const flower = document.createElement("div");
-        flower.className = "flower";
-        flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
-        flower.style.left = Math.random() * 100 + "vw";
-        flower.style.animationDuration = (5 + Math.random() * 5) + "s";
-        flower.style.fontSize = (20 + Math.random() * 30) + "px";
-        document.body.appendChild(flower);
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.className = "flower";
+    flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+    flower.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(flower);
+}
 
-        setTimeout(() => flower.remove(), 10000);
-    }
+function createLoveNote() {
+    const note = document.createElement("div");
+    note.className = "note";
+    note.innerText = loveNotes[Math.floor(Math.random() * loveNotes.length)];
+    note.style.left = (10 + Math.random() * 80) + "vw";
+    note.style.top = (45 + Math.random() * 20) + "vh";
+    document.body.appendChild(note);
+    setTimeout(() => note.remove(), 6000);
+}
 
-    function createLoveNote() {
-        const note = document.createElement("div");
-        note.className = "note";
-        note.innerText = loveNotes[Math.floor(Math.random() * loveNotes.length)];
-        note.style.left = (10 + Math.random() * 80) + "vw";
-        note.style.top = (50 + Math.random() * 30) + "vh";
-        document.body.appendChild(note);
-
-        setTimeout(() => note.remove(), 6000);
-    }
-
-    setInterval(createFlower, 500);
-    setInterval(createLoveNote, 2000);
+setInterval(createFlower, 800);
+setInterval(createLoveNote, 2000);
 </script>
 
 </body>
